@@ -1,0 +1,373 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+*::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sp-cat {
+    border: none;
+    height: 2px;
+    background-color: #474747;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    box-shadow: inset 0px 90px 100px 150px #131313d8;
+}
+
+.back-img {
+    /* position: relative;
+    background-image: url("https://cdn.discordapp.com/attachments/697558902681763926/990271374360735774/unknown.png");
+    background-size: auto, cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+}
+
+.button {
+    position: absolute;
+    color: white;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 2px #239523 solid;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: background-color .2s ease-in-out, transform .2s ease-in-out, color .2s ease-in-out;
+}
+
+.btn-orange {
+    background-color: transparent;
+    border: 2px #e9ac04 solid;
+
+    bottom: 100px;
+    right: 30px;
+}
+
+.btn-green {
+    background-color: transparent;
+    border: 2px #239523 solid;
+
+    bottom: 40px;
+    right: 30px;
+}
+
+.btn-red {
+    background-color: transparent;
+    border: 2px #b63b2a solid;
+    
+    bottom: 40px;
+    left: 30px;
+}
+
+.btn-sw-green{
+    background-color: transparent;
+    border: 2px #239523 solid;
+    
+    bottom: 100px;
+    left: 30px;
+}
+
+.btn-sw-green{
+    background-color: transparent;
+    border: 2px #239523 solid;
+    
+    bottom: 100px;
+    left: 30px;
+}
+
+.btn-sw-red{
+    background-color: transparent;
+    border: 2px #b63b2a solid;
+    
+    bottom: 100px;
+    left: 30px;
+}
+
+.button.btn-green:hover,
+.button.btn-orange:hover,
+.button.btn-red:hover,
+.button.btn-sw-green:hover,
+.button.btn-sw-red:hover {
+    color: black;
+}
+
+
+.button.btn-green:hover {
+    background-color: #239523;
+    transform: translateX(-10px);
+}
+.button.btn-orange:hover {
+    background-color: #e9ac04;
+    transform: translateX(-10px);
+} 
+.button.btn-red:hover {
+    background-color: #b63b2a;
+    transform: translateX(10px);
+}
+
+.button.btn-sw-green:hover {
+    background-color: #239523;
+    transform: translateX(-10px);
+}
+.button.btn-sw-red:hover{
+    background-color: #b63b2a;
+    transform: translateX(10px);
+}
+
+.category {
+    position: absolute;
+    color: white;
+    padding: 15px 20px;
+    box-shadow: inset 3px 0px 0px 0px #ff7a00, 3px 3px 20px 0px #00000059;
+    border-radius: 3px;
+    background-color: #2D2D2D;
+    user-select: none;
+}
+
+.t-l-25 {
+    top: 25px;
+    left: 25px;
+}
+
+.r-25-l-25 {
+    top: 25px;
+    right: 25px;
+}
+
+.r-25-t-45 {
+    top: 140px;
+    right: 25px;
+}
+
+.cat-name {
+    position: relative;
+    margin: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.cat-content i {
+    padding: 2px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+
+.cat-content i:hover {
+    background-color: #cf913f;
+}
+
+.m-left-10 {
+    margin-left: 10px;
+}
+
+.m-right-10 {
+    margin-right: 10px;
+}
+
+.cat-content {
+    position: relative;
+    text-align: center;
+    font-size: 17px;
+}
+
+.notif-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    z-index: -1;
+}
+
+.notification{
+    position: relative;
+    /* width: 35%; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    color: white;
+}
+
+.icon {
+    flex: 0 0 5%;
+    font-size: x-large;
+    margin: 0px 10px;
+
+}
+
+.error {
+    background-color: #ff0000;
+}
+
+.success {
+    background-color: #239523;
+}
+
+.info {
+    background-color: #0994eb;
+}
+
+.saveContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.saveMenu {
+    position: relative;
+    width: 30%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2D2D2D;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    border: 2px orange solid;
+    border-style: solid none;
+}
+
+.saveMenu-header{
+    flex: 0 0 10%;
+    
+    width: 100%;
+    text-align: center;
+}
+
+.saveMenu-list{
+    flex: 0 0 60%;
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid orange;
+    border-style: solid none;
+    padding: 0 10px;
+    overflow-y: auto;
+    scrollbar-width: 1px;
+    scrollbar-color: #ff7a00 #2D2D2D;
+    
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    width: 3px;
+    background: #2D2D2D;
+}
+
+::-webkit-scrollbar-thumb {
+    background: orange;
+    -webkit-border-radius: 1ex;
+}
+
+
+.saveMenu-list div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid orange;
+    border-style: none none solid none;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(35 35 35);
+    
+}
+
+.saveMenu-list div .save-text-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-style: none;
+    align-items: flex-start;
+}
+
+.saveMenu-list div .save-btn-container{
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 100%;
+    border-style: none;
+}
+
+.saveMenu-list div i {
+    border-radius: 100%;
+    padding: 5px 6px;
+    cursor: pointer;
+}
+
+.saveMenu-list div i:hover {
+    background-color: #cf913f;
+    color:#000;
+}
+
+.saveMenu-list div .fa-trash:hover {
+    background-color: #be0808;
+    color:rgb(255, 255, 255);
+}
+
+.saveMenu-content{
+    flex: 0 0 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.saveMenu-content input {
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    outline: none;
+    color: white;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+    transition: background-color .3s ease, transform .3s ease;
+    user-select: text;
+}
+
+.saveMenu-content input:focus {
+    background-color: #2d2d2d;
+    transform: scale(1.05);
+}
+
+.saveMenu-content input:focus::placeholder {
+    color: #a5a5a5;
+}
