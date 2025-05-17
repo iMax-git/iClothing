@@ -77,6 +77,8 @@ class UserInterface{
                     currentskin:skin,
                 }));
             })
+            
+            TriggerServerEvent("iClothing:setBucket",{bucket: GetPlayerServerId(PlayerId())});
             while(this.#open){
                 await this.tools.Wait(5);
                 this.rotate ? SetEntityHeading(PlayerPedId(),GetEntityHeading(PlayerPedId())-0.2) : NaN;
@@ -96,6 +98,8 @@ class UserInterface{
             action: "open",
             open: false
         }));
+        
+        TriggerServerEvent("iClothing:setBucket",{bucket: 0});
     }
 
     isOpen(){

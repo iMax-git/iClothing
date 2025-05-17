@@ -72,3 +72,9 @@ RegisterServEvent("iClothing:delete", (data) => {
         }
     )
 })
+
+RegisterServEvent("iClothing:setBucket", (data) => {
+    const src = source;
+    const bucket = data.bucket;
+    SetPlayerRoutingBucket(src, bucket);
+});
