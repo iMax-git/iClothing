@@ -32,7 +32,9 @@ RegisterServEvent("iClothing:save-skin", (skin,pSource) => {
     const identifier = GetPlayerIdentifier(pSource, 0)
     console.log(identifier);
     const jsonSkin = JSON.stringify(skin);
-    global.exports["mysql-async"].mysql_execute("UPDATE users SET `skin` = @skin WHERE identifier = @identifier", {"identifier": identifier, "skin": jsonSkin})
+    global.exports["oxmysql"].query("UPDATE users SET `skin` = ? WHERE identifier = ?",[jsonSkin,identifier], (result) => {
+
+      });
 })
 
 
@@ -40,37 +42,50 @@ RegisterServEvent("iClothing:getSaves", () => {
     const src = source;
     const playerLicence = GetPlayerIdentifier(src,0);
     // console.log(src,playerLicence);
-    global.exports["mysql-async"].mysql_fetch_all(
-        "SELECT * FROM iClothing WHERE player = @player", { "player": playerLicence }, (result) => {
-            // console.log(result);
-            TriggerClientEvent("iClothing:sendSaves",src,result);
-        }
-    )
+    // global.exports["mysql-async"].mysql_fetch_all(
+    //     "SELECT * FROM iClothing WHERE player = @player", { "player": playerLicence }, (result) => {
+    //         // console.log(result);
+    //         TriggerClientEvent("iClothing:sendSaves",src,result);
+    //     }
+    // )
+    
+    global.exports["oxmysql"].query("SELECT * FROM iClothing WHERE player = ?",[playerLicence ], (result) => {
+        // console.log(result);
+        TriggerClientEvent("iClothing:sendSaves",src,result);
+    });
 })
 
 RegisterServEvent("iClothing:save", (data) => {
     const src = source;
     const playerLicence = GetPlayerIdentifier(src,0);
-    global.exports["mysql-async"].mysql_execute(
-        "INSERT INTO iClothing (player, name,description,skin) VALUES (@player,@name,@description, @skin)", { "player": playerLicence, "name":data.name, "description":data.description,"skin":JSON.stringify(data.skin)}, (result) => {
-            console.log("SAVED: ",result);
-            if (result > 0) {
-                TriggerClientEvent("iClothing:refreshSaves",src);
-            }
-        }
-    )
+    // global.exports["mysql-async"].mysql_execute(
+    //     "INSERT INTO iClothing (player, name,description,skin) VALUES (@player,@name,@description, @skin)", { "player": playerLicence, "name":data.name, "description":data.description,"skin":JSON.stringify(data.skin)}, (result) => {
+    //         console.log("SAVED: ",result);
+    //         if (result > 0) {
+    //             TriggerClientEvent("iClothing:refreshSaves",src);
+    //         }
+    //     }
+    // )
+    global.exports["oxmysql"].query("INSERT INTO iClothing (player, name,description,skin) VALUES (?,?,?,?)",[playerLicence,data.name,data.description,JSON.stringify(data.skin)], (result) => {
+        TriggerClientEvent("iClothing:refreshSaves",src);
+    });
 })
 
 RegisterServEvent("iClothing:delete", (data) => {
     const src = source;
-    global.exports["mysql-async"].mysql_execute(
-        "DELETE FROM iClothing WHERE id = @id", { "id": data.data }, (result) => {
-            console.log("DELETED: ",result);
-            if (result > 0) {
-                TriggerClientEvent("iClothing:refreshSaves",src);
-            }
-        }
-    )
+    // global.exports["mysql-async"].mysql_execute(
+    //     "DELETE FROM iClothing WHERE id = @id", { "id": data.data }, (result) => {
+    //         console.log("DELETED: ",result);
+    //         if (result > 0) {
+    //             TriggerClientEvent("iClothing:refreshSaves",src);
+    //         }
+    //     }
+    // )
+    
+    global.exports["oxmysql"].query("DELETE FROM iClothing WHERE id = ?",[data.data ], (result) => {    
+        TriggerClientEvent("iClothing:refreshSaves",src);
+    
+    });
 })
 
 RegisterServEvent("iClothing:setBucket", (data) => {

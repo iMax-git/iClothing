@@ -98,7 +98,6 @@ class UserInterface{
             action: "open",
             open: false
         }));
-        
         TriggerServerEvent("iClothing:setBucket",{bucket: 0});
     }
 
